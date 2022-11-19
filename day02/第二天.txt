@@ -1,0 +1,67 @@
+JS数据类型 
+分为    基本数据类型(undefined - - (未定义)、null- - (空的)、number - - (数字)、boolean- - (布尔值)、string- - (字符串)、Symbol - - (符号)；bigint)
+和复杂数据类型(Object- - (对象)，比如：array - - （数组）、function - - （函数）、data - - （时间）以及 es6 新增加的 map 和 set)
+
+
+Js中的数据类型转换有两种模式，**一种是隐式转换，一种是显示转换**
+转换数字
+  number()  字符串转换为数字：空字符串变为0，如果出现任何非有效数字字符，结果都是NaN     布尔值转换为数字:true–>1,false–>0 null–>0,undefined–>NaN Symbol无法转换为数字，会报错  BigInt去除"n"
+1n是1  1kaskd是NAN
+ 运算符+-*/  
+  parseInt，数组取整
+parseFloat(取数值  字母后面的数字也不取)
+
+string()
+console.log(String(1)); //'1'
+console.log(String(NaN)); //'NaN'
+console.log(String(null)); //'null'
+console.log(String(undefined)); //'undefined'
+console.log(String(Symbol())); //'Symbol()'
+console.log(String({})); //'[object Object]'
+
+typeof 检测基本数据类型比较准，null检测为object不代表它是引用数据类型，null为空是特殊的基本数据类型，引用数据类型都为 object，内置构造函数和函数都为 function
+instanceof 不能检测基本数据类型，判断前者的 proto 是否在后者的原型对象上
+constructor 返回构造函数 返回当前值的构造函数，比如向 [] 数组这种，都是通过 new Array() 这样去创建实例的，这个 Array 就是数组的构造函数
+Object.prototype.toString.call()	这个方法查的特别的准，可以检查任意类
+
+- ***typeof：这种方法只能检测基本数据类型，null 和对象的不准***
+- ***instanceof：只要是基本数据类型检测就是false，只要是引用数据类型，并且右边是 Object 就是true，可以很好的区分是哪一大类型***
+- ***constructor：可以检查基本和引用数据类型，但是可以被修改，有一定的缺陷***
+- ***Object.prototype.toString.call()：这种方式是最准的，什么类型都可以检测***
+- ***Object.getPrototypeOf()：这种方法获取原型***	
+
+## 作用域及作用域链
+
+- 所谓作用域通俗点讲就是变量的可作用范围。
+
+- 一般有三种作用域。全局，函数，块。
+
+##### 什么是变量提升？
+
+变量提升是指将变量声明提升到它所在的作用域的最开始部分
+
+函数提升与变量提升的优先级
+console.log(a);    // f a() {console.log(10)}
+console.log(a());    // 10 undefined
+var a = 3;
+
+function a() {
+		console.log(10) //10
+}
+console.log(a)   //3
+**由此可见函数提升要比变量提升的优先级要高一些，且不会被变量声明覆盖，但是会被变量赋值之后覆盖
+### .三元表达式
+
+三元表达式可以替代简单的if条件，**表达式为判断条件 ？条件为真 ：条件为假**。例如：3 > 4 ? console.log("条件为真") : console.log("条件为假")
+### 短路运算符 && 与 ||
+
+**短路运算符就是从左到右的运算中前者满足要求，就不再执行后者了。**
+### .比较运算符
+
+与数学运算中的比较相同**：大于(>)、小于(<)、大于等于(>=)、小于等于(<=)、相等(==)、全等(===)、不等(!=)、不全等(!==)**等；注意: **全等不光比较两者值是否相同，还比较变量类型是否相同；不全等也是一样**；
+
+length     ***代表字符串长度***
+lastindexOf() 查找  从后往前
+replace() 替换
+split()   将字符串转化成字符串数组
+.substr()   字符串的截取

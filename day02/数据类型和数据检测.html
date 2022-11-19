@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 数据类型转化
+    //转化数字   
+    // Number()方法
+    //1
+    // let str="21"
+    // let arr=Number(str)
+    // console.log(arr);
+
+    // parseInt()方法取整
+    //1
+    // let clear="14.22"
+    // let out=parseInt(clear)
+    // console.log(out);
+
+
+    //parseFloat()方法  取数值有字母不取后面的
+    //1
+    // let hnk="52.1123"
+    // let zkq=parseFloat(hnk)
+    // console.log(zkq);
+
+
+    //字符串转换数字
+    //number()
+    //1
+    // console.log(Number(""));//是个0
+    // console.log(Number("5"));//是个5
+    // console.log(Number("20px"));//是个NAN
+
+
+    //smbol无法转换为数字，会报错
+    //1
+    // let a=Symbol("a")
+    // console.log(Number(a));//特殊的symbol不能转换
+
+    //Biglnt去除n
+    //1
+    // console.log(Number(1n));//是1  因为去除了n
+    // console.log(Number(3b));//报错
+    //数组转Number
+    //1
+    // let arr=[10]
+    // console.log(Number(arr));
+
+    //除了对象意外用字符串包起来
+    //1
+    //  console.log(String(1));//'1'
+    //  console.log(String(NaN));//NaN
+
+    //  console.log(10+'10');//'1010'
+
+    //1
+    //  let arr=10
+    //  arr++
+    //  console.log(arr);//11
+    //  let i='10'
+    //  i++
+    //  console.log(arr);
+    //   var i=1
+    //   console.log(i);//1
+    //   var a=i++
+    //   console.log(i);//2
+    //   console.log(a);//1
+
+    //   var i=1;
+    //   console.log(i);//1
+    //   var a=++i
+    //   console.log(i);//2
+    //   console.log(a);//2
+
+    // typeof
+    let num = 123;
+    let str = '123'
+    let bool = true
+    let arr = []
+    let obj = {}
+    let fn = function () {}
+    let cla = class {}
+    let number = new Number(12)
+    // console.log(typeof num);//number
+    // console.log(typeof str);//string
+    // console.log(typeof bool);//boolean
+    // console.log(typeof null);//object
+    // console.log(typeof undefined);//undefined
+    // console.log(typeof arr);// object
+    // console.log(typeof Array);// function
+    // console.log(typeof obj);//object
+    // console.log(typeof object);//function
+    // console.log(typeof fn);//function
+    // console.log(typeof cla);//function
+    // console.log(typeof aaa);//undefined  未定义的变量
+
+
+    //instanceof 方法
+    // console.log(number instanceof Number);//true
+    // console.log(num instanceof Number);//false
+    // console.log(str instanceof String);//false
+    // console.log(bool instanceof Boolean);//false
+    // console.log(null instanceof Object);//false
+    // console.log(undefined instanceof Object);//false
+    // console.log(arr instanceof Array);//true
+    // console.log(arr instanceof Object);//true
+    // console.log(obj instanceof Object);//true
+    // console.log(fn instanceof Function);//true
+    // console.log(fn instanceof Object);//true
+    // console.log(cla instanceof Function);//true
+    // console.log(cla instanceof Function);//true
+  
+    // .constructor方法
+   
+    // console.log(num.constructor);//ƒ Number() { [native code] }
+    // console.log(str.constructor);//ƒ String() { [native code] }
+    // console.log(bool.constructor);//ƒ Boolean() { [native code] }
+    // console.log(arr.constructor);//ƒ Array() { [native code] }
+    // console.log(obj.constructor);//ƒ Object() { [native code] }
+    // console.log(fn.constructor);//ƒ Function() { [native code] }
+    // console.log(cla.constructor);//ƒ Function() { [native code] }
+    // function Demo(){
+    //     Demo.prototype=Array.prototype
+    //     let demo= new Demo()
+    //     console.log(demo.constructor);//ƒ Function() { [native code] }
+    // }
+
+    // Object.prototype.toString.call() 
+    // console.log(Object.prototype.toString.call(num));
+    // console.log(Object.prototype.toString.call(str));
+    // console.log(Object.prototype.toString.call(boll));
+    // console.log(Object.prototype.toString.call(null));
+    // console.log(Object.prototype.toString.call(undefined));
+    // console.log(Object.prototype.toString.call(arr));
+    // console.log(Object.prototype.toString.call(obj));
+    // console.log(Object.prototype.toString.call(fn));
+    // console.log(Object.prototype.toString.call(cla));
+
+    // Object.getPrototypeOf()
+    //获取原型
+    console.log(Object.getPrototypeOf([]) == Array.prototype); //true
+    console.log(Object.getPrototypeOf({}) == Object.prototype); //true
+</script>
+
+</html>

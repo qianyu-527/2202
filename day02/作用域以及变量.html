@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+//    作用域就是变量可作用的范围
+//作用域。全局，块
+// var a = 100;
+// function fun1() {
+//   var b = 200;
+//   if (true) {
+//     let c = 300;
+//     console.log(c);
+//   }
+//   console.log(b);
+// }
+// fun1();
+// console.log(a);
+// 变量提升是指将变量声明提升到它所在的作用域的最开始部分
+// console.log(str)
+// var str = 'Jerry'
+// console.log(str)
+// // undefined Jerry
+//函数声明   //函数表达式
+// function a() {
+// 		console.log(a) 
+// } 
+// var b = function(){
+// 		console.log(b)
+// }
+// 函数提升与变量提升的优先级
+//1
+console.log(a);    // f a() {console.log(10)}
+console.log(a());    // 10 undefined
+var a = 3;
+
+function a() {
+		console.log(10) //10
+}
+console.log(a)   //3
+a = 6;
+console.log(a());  //a is not a function;
+// 2
+// console.log(a);    // f a() {console.log(10)}
+// console.log(a());    // 10 undefined
+// var a = 3;
+
+// function a() {
+// 		console.log(10) //10
+// }
+// console.log(a)   //3
+// a = 6;
+// console.log(a());  //a is not a function;
+// 2
+// console.log(a);    // f a() {console.log(10)}
+// console.log(a());    // 10 undefined
+// var a = 3;
+
+// function a() {
+// 		console.log(10) //10
+// }
+// console.log(a)   //3
+// a = 6;
+// console.log(a());  //a is not a function;
+</script>
+
+</html>
