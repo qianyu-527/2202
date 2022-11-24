@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let set= new Set()
+    console.log(set);
+    set.add('666')
+    set.add('随机')
+    set.add('随机22')
+    set.add('随机211')
+    console.log(set);
+    set.delete('666')
+    console.log(set);
+    console.log(set.has('北大'))
+    //遍历循环
+    for(let key of set){
+        console.log(key);
+    }
+    //获取长度
+    console.log(set.name);
+    //去重
+    let array=[1,1,1,1,2,2,2,4,4,5,6,7]
+     let result=new Set(array)
+    //  将set数组变成数组
+    // 方法  1扩展运算符  2循环遍历 3Array.form()
+    // 8.将对个值变成数组的方法1
+    // Array of()
+    let b=[...result]
+    console.log(b);
+    let c=Array.from(result)
+    console.log(c);
+
+    
+    // let set= new Set()
+    // console.log(set);
+    // set.add('666')
+    // set.add('随机')
+    // set.add('随机22')
+    // set.add('随机211')
+    // console.log(set);
+    // set.delete('666')
+    // console.log(set);
+    // console.log(set.has('北大'))
+    // for(let key of set){
+    //     console.log(key);
+    // }
+    // console.log(set.name);
+    // let array=[1,1,1,1,2,2,2,4,4,5,6,7]
+    //  let result=new Set(array)
+    // //  将set数组变成数组
+    // // 方法  1扩展运算符  2循环遍历 3Array.form()
+    // // 8.将对个值变成数组的方法1
+    // // Array of()
+    // let b=[...result]
+    // console.log(b);
+    // let c=Array.from(result)
+    // console.log(c);
+    // let set= new Set()
+    // console.log(set);
+    // set.add('666')
+    // set.add('随机')
+    // set.add('随机22')
+    // set.add('随机211')
+    // console.log(set);
+    // set.delete('666')
+    // console.log(set);
+    // console.log(set.has('北大'))
+    // for(let key of set){
+    //     console.log(key);
+    // }
+    // console.log(set.name);
+    // let array=[1,1,1,1,2,2,2,4,4,5,6,7]
+    //  let result=new Set(array)
+    // //  将set数组变成数组
+    // // 方法  1扩展运算符  2循环遍历 3Array.form()
+    // // 8.将对个值变成数组的方法1
+    // // Array of()
+    // let b=[...result]
+    // console.log(b);
+    // let c=Array.from(result)
+    // console.log(c);
+</script>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const f1=`随机内容是随随便便`
+    const f2=`内容都是随机写的无所谓的`
+    const f3=`小鲁班托马斯回旋惨遭毒打一顿`
+
+    function p1(){
+        return new Promise(function(resole,reject){
+            setTimeout(()=>{
+                resole(f1)
+            })
+        })
+    }
+    function p2(){
+        return new Promise(function(resole,reject){
+            setTimeout(()=>{
+                resole(f2)
+            })
+        })
+    }
+    function p3(){
+        return new Promise(function(resole,reject){
+            setTimeout(()=>{
+                resole(f3)
+            })
+        })
+    }
+
+    Promise.all([p1(),p2(),p3()]).then(res=>{
+        console.log(res);
+    })
+    //  接收参数为数组 返回值也是数组
+    // const f1=`随机内容是随随便便`
+    // const f2=`内容都是随机写的无所谓的`
+    // const f3=`小鲁班托马斯回旋惨遭毒打一顿`
+    // function p1(){
+    //     return new Promise(function(resole,reject){
+    //         setTimeout(()=>{
+    //             resole(f1)
+    //         })
+    //     })
+    // }
+    // function p2(){
+    //     return new Promise(function(resole,reject){
+    //         setTimeout(()=>{
+    //             resole(f2)
+    //         })
+    //     })
+    // }
+    // function p3(){
+    //     return new Promise(function(resole,reject){
+    //         setTimeout(()=>{
+    //             resole(f3)
+    //         })
+    //     })
+    // }
+
+    // Promise.all([p1(),p2(),p3()]).then(res=>{
+    //     console.log(res);
+    // })
+    // const f1=`随机内容是随随便便`
+    // const f2=`内容都是随机写的无所谓的`
+    // const f3=`小鲁班托马斯回旋惨遭毒打一顿`
+    // function p1(){
+    //     return new Promise(function(resole,reject){
+    //         setTimeout(()=>{
+    //             resole(f1)
+    //         })
+    //     })
+    // }
+    // function p2(){
+    //     return new Promise(function(resole,reject){
+    //         setTimeout(()=>{
+    //             resole(f2)
+    //         })
+    //     })
+    // }
+    // function p3(){
+    //     return new Promise(function(resole,reject){
+    //         setTimeout(()=>{
+    //             resole(f3)
+    //         })
+    //     })
+    // }
+    // Promise.all([p1(),p2(),p3()]).then(res=>{
+    //     console.log(res);
+    // })
+</script>
+</html>
