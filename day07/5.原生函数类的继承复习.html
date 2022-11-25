@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // function Phone(brand,price){
+    //     this.brand=brand
+    //     this.price=price
+    // }
+    // Phone.prototype.call=function(){
+    //     console.log('去旅行');
+    // }
+    // function p(brand,price,color,size){
+    //     Phone.call(this,brand,price);
+    //     this.color=color
+    //     this.size=size
+    // }
+    // p.prototype=new Phone;
+    // p.prototype.constructor=p;
+    // // 声明子类
+    // p.prototype.photo=function(){
+    //     console.log('随机拍照');
+    // }
+    // p.prototype.play=function(){
+    //     console.log('随机的旅行');
+    // }
+    // const sut=new p('随机','24211','粉色','s55')
+    // console.log(sut);
+
+    // function phone(brand, price) {
+    //     this.brand = brand
+    //     this.price = price
+    // }
+    // phone.prototype.call = function () {
+    //     console.log('无所谓不能');
+    // }
+
+    // function p(brand, price, color, size) {
+    //     phone.call(this, brand, price)
+    //     this.color = color
+    //     this.size = size
+    // }
+    // p.prototype = new phone;
+    // p.prototype.constructor = p;
+    // p.prototype.pho = function () {
+    //     console.log('随机的');
+    // }
+    // p.prototype.play = function () {
+    //     console.log('随机的旅行');
+    // }
+    // const our = new p('学习', '2224', '粉色', 'S99')
+    // console.log(our);
+    function phone(brand, price) {
+        this.brand = brand
+        this.price = price
+    }
+    phone.prototype.call = function () {
+        console.log('嗯');
+    }
+
+    function p(brand, price, color, size) {
+        phone.call(this, brand, price)
+        this.color = color
+        this.size = size
+    }   
+    p.prototype = new phone;
+    p.prototype.constructor = p;
+    p.prototype.pho = function () {
+        console.log('随机的');
+    }
+    p.prototype.play = function () {
+        console.log('随机的旅行');
+    }
+    const our = new p('学习', '2224', '粉色', 'S99')
+    console.log(our);
+</script>
+
+</html>

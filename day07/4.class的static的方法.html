@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // class Trp{
+    //     static trple(n=1){
+    //         return n*3
+    //     }
+    // }
+    // class bing extends  Trp{
+    //     static trple(n){
+    //         return super.trple(n)*super.trple(n)
+    //     }
+    // }
+    // console.log(Trp.trple());//3
+    // console.log(Trp.trple(6));//18
+    // let tp=new Trp();
+    // console.log(bing.trple(3));//81(不会受父类实例化的影响)
+    // // console.log(tp.trple());//会报错
+
+    // class Trp{
+    //     static trple(n=1){
+    //         return n*3
+    //     }
+    // }
+    // class bing extends  Trp{
+    //     static trple(n){
+    //         return super.trple(n)*super.trple(n)
+    //     }
+    // }
+    // console.log(Trp.trple());
+    // console.log(Trp.trple(6));
+    // let tp=new Trp();
+    // console.log(bing.trple(3));
+    class Trp{
+        static trple(n=1){
+            return n*3
+        }
+    }
+    class bing extends  Trp{
+        static trple(n){
+            return super.trple(n)*super.trple(n)
+        }
+    }
+    console.log(Trp.trple());
+    console.log(Trp.trple(6));
+    let tp=new Trp();
+    console.log(bing.trple(3));
+</script>
+
+</html>
