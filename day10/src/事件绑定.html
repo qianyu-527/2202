@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+     <p >{{msg}}</p>
+    <button @click="add">点击不传参</button>
+    <button @click="add2($event,66)">点击信息传参</button>
+    </div>
+</body>
+<script>
+Vue.config.productionTip = false
+  new Vue({
+    el:"#app",
+    data() {
+        return {
+            msg:"随机",
+        }
+    },
+    methods: {
+        add(){
+            this.msg='真的很美好'
+        },
+        add2(event,value){
+            console.log(event.target.innerText);
+            console.log(value);
+        }
+    },
+  })
+</script>
+</html>
