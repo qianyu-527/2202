@@ -45,11 +45,9 @@
             </svg><span class="msg" data-v-132cabf7="">Congrat, you have no more tasks to do</span></div>
         <div class="unq">
             <p><span class="spp">0</span> item left</p>
-            <div>
                 <p class="titlee">All</p>
                 <p>Active</p>
                 <p>Completed</p>
-            </div>
             <p>Clear completed</p>
         </div>
     </div>
@@ -85,20 +83,28 @@
         setFn()
         //调用每次添加的内容到页面
         ont()
-
+        //底部
+        oot()
     }
+    ul.addEventListener('click',function(e){
+        if(e.target.className=='del'){
+            data.splice(e.target.id,1)
+        }
+        ont()//重新加载页面
+        oot()//底部的显示和隐藏
+    })
     //添加 
     function ont() {
         ul.innerHTML = ""
         data.forEach(function (ele, index) {
             //用createElement创建标签
             var li = document.createElement('li')
-            if (ele.status) {
+            if (ele.flag) {
                 // 选中的状态
                 li.innerHTML = `
                   <div class="ck" id=${index}>√</div>
                  <span>${ele.name}</span>
-                 <span class="del">X</span>
+                 <span class="del" id=${index}>X</span>
             `
                 //添加背景颜色 和文字颜色
                 li.style.backgroundColor = '#fe7446'
@@ -108,30 +114,44 @@
                 li.innerHTML = `
                   <div class="ck" id=${index}></div>
                  <span>${ele.name}</span>
-                 <span class="del">X</span>
+                 <span class="del" id=${index}>X</span>
             `
             }
             //给ul添加li标签
             ul.appendChild(li)
         })
 
-        //   删除  先找到所有的删除
-        var del = document.querySelectorAll('.del')
-        // 循环数据下标删除
-        for (let i = 0; i < data.length; i++) {
-            del[i].onclick = function () {
-                this.parentNode.remove()
-            }
-        }
+        // //   删除  先找到所有的删除
+        // var del = document.querySelectorAll('.del')
+        // // 循环数据下标删除
+        // for (let i = 0; i < data.length; i++) {
+        //     del[i].onclick = function () {
+        //         this.parentNode.remove()
+        //     }
+        // }
         // 获取数量   先获取标签 然后把未选中的赋值给内容
         var spp = document.querySelector('.spp');
         const num = data.filter(i => i.flag == false).length
         spp.innerHTML = `${num}`
     }
+    // 底部的显示和隐藏
+    var en=document.querySelector('.en')
+    var unq=document.querySelector('.unq')
+    // function oot() {
+    //     if (data.length= 0) {
+    //         en.style.display = 'block'
+    //         unq.style.display = 'none'
+
+    //     } else {
+    //         en.style.display = 'none'
+    //         unq.style.display = 'block'
+    //     }
+    // }
     // 通过点击按钮添加
     bt.onclick = function () {
         // 调用封装好的添加内容
         fool()
+        oot()//底部的显示和隐藏
     }
     // 通过按回车键添加
     value.onkeyup = function (e) {
@@ -309,8 +329,8 @@
     }
 
     .ck {
-        width: 10px;
-        height: 10px;
+        width: 14px;
+        height: 14px;
         border: 1px solid #000;
     }
 

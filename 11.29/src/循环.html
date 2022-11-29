@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <!-- 循环遍历 -->
+        <ul>
+            <li v-for="item in arr" :key="item.id">
+                <span>{{item.id}}</span>
+                <span>{{item.name}}</span>
+                <span>{{item.age}}</span>
+                <input type="text">
+            </li> 
+        </ul>
+
+        <button @click.once="add">添加老六</button>
+        <ul>
+            <li v-for="(p,index) of arr" :key="index">
+                {{p.name}}---{{p.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false
+    new Vue({
+        el:"#app",
+        data() {
+            return {
+                arr:[
+                    {id:"01",name:"张三",age:18},
+                    {id:"02",name:"老六",age:20},
+                    {id:"03",name:"老七",age:14},
+                ],
+            }
+        },
+        // methods: {
+        //     add(){
+        //         const p={id:'04',name:'老六',age:12}
+        //         // this.arr.unshift(p)//头部添加
+        //         this.arr.push(p)//尾部添加
+        //     }
+        // },
+         // methods: {
+        //     add(){
+        //         const p={id:'04',name:'老六',age:12}
+        //         // this.arr.unshift(p)//头部添加
+        //         this.arr.push(p)//尾部添加
+        //     }
+        // },
+
+         methods: {
+            add(){
+                const p={id:'04',name:'老六',age:12}
+                this.arr.unshift(p)//头部添加
+                // this.arr.push(p)//尾部添加
+            }
+        },
+    })
+</script>
+</html>
