@@ -45,15 +45,20 @@
             </svg><span class="msg" data-v-132cabf7="">Congrat, you have no more tasks to do</span></div>
         <div class="unq">
             <p><span class="spp">0</span> item left</p>
-                <p class="titlee">All</p>
-                <p>Active</p>
-                <p>Completed</p>
-            <p>Clear completed</p>
+            <p class="titlee" id="str1" name='allall'>All</p>
+            <p id="str2" name='allall'>Active</p>
+            <p id="str3" name='allall'>Completed</p>
+            <p id="str4" name='allall'>Clear completed</p>
         </div>
     </div>
 
 </body>
 <script>
+    // 获取点击的
+    var str1 = document.getElementById("str1")
+    var str2 = document.getElementById("str2")
+    var str3 = document.getElementById("str3")
+    var str4 = document.getElementById("str4")
     //  获取输入框值
     var value = document.querySelector('.input')
     // 获取按钮
@@ -62,6 +67,8 @@
     var ul = document.querySelector('ul')
     //存入本地数据
     var data = [];
+    //  判断选中
+    let mun = 0;
     //  存
     function setFn() {
         localStorage.setItem("list", JSON.stringify(data))
@@ -85,13 +92,17 @@
         ont()
         //底部
         oot()
+        toggle()
+        All()
     }
-    ul.addEventListener('click',function(e){
-        if(e.target.className=='del'){
-            data.splice(e.target.id,1)
+    ul.addEventListener('click', function (e) {
+        if (e.target.className == 'del') {
+            data.splice(e.target.id, 1)
         }
-        ont()//重新加载页面
-        oot()//底部的显示和隐藏
+        ont() //重新加载页面
+        oot() //底部的显示和隐藏
+        toggle()
+        All()
     })
     //添加 
     function ont() {
@@ -100,6 +111,9 @@
             //用createElement创建标签
             var li = document.createElement('li')
             if (ele.flag) {
+                if (mun == 2) {
+                    return false
+                }
                 // 选中的状态
                 li.innerHTML = `
                   <div class="ck" id=${index}>√</div>
@@ -110,6 +124,9 @@
                 li.style.backgroundColor = '#fe7446'
                 li.style.color = '#fff'
             } else {
+                if (mun == 1) {
+                    return false
+                }
                 //  未选中的内容
                 li.innerHTML = `
                   <div class="ck" id=${index}></div>
@@ -135,23 +152,45 @@
         spp.innerHTML = `${num}`
     }
     // 底部的显示和隐藏
-    var en=document.querySelector('.en')
-    var unq=document.querySelector('.unq')
-    // function oot() {
-    //     if (data.length= 0) {
-    //         en.style.display = 'block'
-    //         unq.style.display = 'none'
+    var en = document.querySelector('.en')
+    var unq = document.querySelector('.unq')
 
-    //     } else {
-    //         en.style.display = 'none'
-    //         unq.style.display = 'block'
-    //     }
-    // }
+    function oot() {
+        if (data.length != 0) {
+            en.style.display = 'none'
+            unq.style.display = 'block'
+
+        } else {
+            en.style.display = 'block'
+            unq.style.display = 'none'
+        }
+    }
+
+
+
+    function toggle() {
+        let num = data.filter(i => i.status == true).length
+        if (num == 0) {
+            str1.style.display = "none"
+            str2.style.display = "none"
+            str3.style.display = "none"
+        } else if (num == data.length) {
+            str1.style.display = "none"
+            str2.style.display = "none"
+            str3.style.display = "block"
+            str4.style.display = 'block'
+        } else if (num != 0) {
+            str1.style.display = "block"
+            str2.style.display = "block"
+            str3.style.display = "block"
+            str4.style.display = 'block'
+        }
+    }
     // 通过点击按钮添加
     bt.onclick = function () {
         // 调用封装好的添加内容
         fool()
-        oot()//底部的显示和隐藏
+
     }
     // 通过按回车键添加
     value.onkeyup = function (e) {
@@ -162,13 +201,37 @@
         }
     }
     //点击切换状态
-    ul.onclick=function(e){
-   if(e.target.className=='ck'){
-    data[e.target.id].flag=!data[e.target.id].flag
-      ont()
-   }
-    }
+    ul.onclick = function (e) {
+        if (e.target.className == 'ck') {
+            data[e.target.id].flag = !data[e.target.id].flag
+            ont() //添加调用
+            oot() //底部
+            All()
 
+        }
+    }
+    //通过判断设置隐藏和显示
+    function All() {
+        var all = document.getElementsByName('allall')
+        for (let j = 0; j < all.length; j++) {
+            all[j].onclick = function () {
+                mun = j
+                if (mun == 3) {
+                    data = data.filter(i => i.flag == false)
+                    mun =  0
+                    ont()
+                    toggle()
+                    arr[0].classList.add('active')
+                    arr[0].classList.remove('active')
+                }
+                ont()
+                for (var i = 0; i < all.length; i++) {
+                    arr[i].classList.remove('active')
+                    this.All.add('active')
+                }
+            }
+        }
+    }
 
     // 点击按钮会动
     document.getElementById('btn').addEventListener('click', function (e) {

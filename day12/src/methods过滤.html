@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>人员列表</h1>
+        <input type="text" v-model="sear" placeholder="请输入查询" @input="change" >
+        <ul>
+            <li v-for="item in obj" :key="item.id">
+                {{item.name}}----{{item.age}}---{{item.sex}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false
+    new  Vue({
+        el:"#app",
+        data() {
+            return {
+                arr:[
+                    {id:1,name:"老大",age:18,sex:"男"},
+                    {id:2,name:"老二",age:14,sex:"女"},
+                    {id:3,name:"老三",age:12,sex:"女"},
+                    {id:4,name:"老四",age:5,sex:"男"},
+                ],
+                sear:"",
+                obj:[]
+            }
+        },
+        // methods: {
+        //     change(){
+        //         this.obj=this.arr.filter(i=>i.name.includes(this.sear))
+        //     }
+        // },
+        methods: {
+            change(){
+                this.obj=this.arr.filter(i=>i.name.includes(this.sear))
+            }
+        },
+    })
+</script>
+</html>
