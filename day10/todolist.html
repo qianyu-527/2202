@@ -45,7 +45,7 @@
             </svg><span class="msg" data-v-132cabf7="">Congrat, you have no more tasks to do</span></div>
         <div class="unq">
             <span class="spp">0item left</span>
-            <span id="str1" class="all  active">All</span>
+            <span id="str1" class="all  act">All</span>
             <span id="str2" class="all">Active</span>
             <span id="str3" class="all">Completed</span>
             <span id="str4" class="all">Clear completed</span>
@@ -67,8 +67,6 @@
     var ul = document.querySelector('ul')
     //存入本地数据
     var data = [];
-    //  判断选中
-    let mun = 0;
     //  存
     function setFn() {
         localStorage.setItem("list", JSON.stringify(data))
@@ -123,7 +121,7 @@
             //用createElement创建标签
             var li = document.createElement('li')
             if (ele.flag) {
-                if (mun == 2) {
+                if (mun == 1) {
                     return false
                 }
                 // 选中的状态
@@ -133,10 +131,11 @@
                  <span class="del" id=${index}>X</span>
             `
                 //添加背景颜色 和文字颜色
-                li.style.backgroundColor = '#fe7446'
-                li.style.color = '#fff'
+                // li.style.backgroundColor = '#fe7446'
+                // li.style.color = '#fff'
+                li.classList.add('active')
             } else {
-                if (mun == 1) {
+                if (mun == 2) {
                     return false
                 }
                 //  未选中的内容
@@ -200,25 +199,28 @@
     enq()//底部显示和隐藏
     // 封装底部点击事件
     // 获取需要点击的标签
+    //  判断选中
+    let mun = 0;
     var all=document.querySelectorAll('.all')
-    function kk(){
-       for (let i = 0; i < all.length; i++) {
-       mun=i
-       console.log(mun);
-    //    if(mun==3){
-    //     data=data.filter(i=>i.flag==false)
-    //     mun=0
-    //     ont()
-    //     toggle()
-    //     all[0].classList.add("active")
-    //     all[0].classList.remove("active")
-    //    }
-        // ont()
-    //    for (let j = 0; j < all.length; j++) {
-    //     all[j].classList.remove('active')
-    //     this.kk.add('active')
-    //    }
-       }
+    function kk() {
+        for (let i = 0; i < all.length; i++) {
+            all[i].onclick = function () {
+                mun = i
+                if (mun == 3) {
+                    arr = data.filter(i => i.flag == false)
+                    mun = 0
+                    ont()
+                    toggle()
+                    all[0].classList.add("act")
+                    all[0].classList.remove("act")
+                }
+                ont()
+                for (var j = 0; j < all.length; j++) {
+                    all[j].classList.remove('act')
+                    this.kk.add('act')
+                }
+            }
+        }
     }
     // 点击按钮会动
     document.getElementById('btn').addEventListener('click', function (e) {
@@ -260,14 +262,33 @@
         list-style: none;
         font-family: Yanone Kaffeesatz, sans-serif;
     }
-
+    .act{
+        background-color: #fe7345;
+        color: #fff;
+    }
     /* 点击复选框的 */
     .active {
         background-color: #fe7345;
         color: #fff;
         text-decoration: line-through;
-    }
+        border-radius: 8px;
+        /* 动画的持续时间 */
+        animation-duration: 0.5s;
+         /* 过渡类型 */
+         animation-timing-function: ease-in-out;
+         /*  动画名称*/
+         animation-name: resm;
 
+    }
+    @keyframes resm {
+        0%{
+            /* 沿着X轴旋转 */
+            transform: rotateX(270deg);
+        }
+        100%{
+            transform: rotateX(360deg);
+        }
+    }
     /* 身体 */
     body {
         background-image: linear-gradient(90deg, #ffb0bb, #ffc2a2);
@@ -376,6 +397,8 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        margin: 10px 40px;
+        padding: 10px;
     }
 
     .ck {
@@ -417,14 +440,6 @@
         justify-content: space-around;
         align-items: center;
         margin: 20px 0;
-    }
-
-    .unq div {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        /* “gap 属性是用来设置网格行与列之间的间隙,该属性是row-gap and column-gap的简写形式 */
-
     }
 </style>
 
