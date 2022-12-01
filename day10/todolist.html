@@ -44,11 +44,11 @@
                 </path>
             </svg><span class="msg" data-v-132cabf7="">Congrat, you have no more tasks to do</span></div>
         <div class="unq">
-            <p><span class="spp">0</span> item left</p>
-            <p class="titlee" id="str1" name='allall'>All</p>
-            <p id="str2" name='allall'>Active</p>
-            <p id="str3" name='allall'>Completed</p>
-            <p id="str4" name='allall'>Clear completed</p>
+            <span class="spp">0item left</span>
+            <span id="str1" class="all  active">All</span>
+            <span id="str2" class="all">Active</span>
+            <span id="str3" class="all">Completed</span>
+            <span id="str4" class="all">Clear completed</span>
         </div>
     </div>
 
@@ -89,21 +89,33 @@
         //调用本地存储
         setFn()
         //调用每次添加的内容到页面
-        ont()
-        //底部
-        oot()
-        toggle()
-        All()
+        ont() 
+        enq()//底部显示和隐藏
+        toggle()//下面显示和隐藏
+        kk()
     }
     ul.addEventListener('click', function (e) {
         if (e.target.className == 'del') {
             data.splice(e.target.id, 1)
         }
         ont() //重新加载页面
-        oot() //底部的显示和隐藏
-        toggle()
-        All()
+        enq()//底部显示和隐藏
+        toggle()//下面文字隐藏和显示
+        kk()
     })
+    // 底部
+    var f1=document.querySelector(".en")
+    var f2=document.querySelector('.unq')
+    function enq() {
+        if (data.length != 0) {
+            f1.style.display = "none"
+            f2.style.display = "flex"
+        }
+        else {
+            f1.style.display = "block"
+            f2.style.display = "none"
+        }
+    }
     //添加 
     function ont() {
         ul.innerHTML = ""
@@ -137,54 +149,10 @@
             //给ul添加li标签
             ul.appendChild(li)
         })
-
-        // //   删除  先找到所有的删除
-        // var del = document.querySelectorAll('.del')
-        // // 循环数据下标删除
-        // for (let i = 0; i < data.length; i++) {
-        //     del[i].onclick = function () {
-        //         this.parentNode.remove()
-        //     }
-        // }
         // 获取数量   先获取标签 然后把未选中的赋值给内容
         var spp = document.querySelector('.spp');
         const num = data.filter(i => i.flag == false).length
-        spp.innerHTML = `${num}`
-    }
-    // 底部的显示和隐藏
-    var en = document.querySelector('.en')
-    var unq = document.querySelector('.unq')
-
-    function oot() {
-        if (data.length != 0) {
-            en.style.display = 'none'
-            unq.style.display = 'block'
-
-        } else {
-            en.style.display = 'block'
-            unq.style.display = 'none'
-        }
-    }
-
-
-
-    function toggle() {
-        let num = data.filter(i => i.status == true).length
-        if (num == 0) {
-            str1.style.display = "none"
-            str2.style.display = "none"
-            str3.style.display = "none"
-        } else if (num == data.length) {
-            str1.style.display = "none"
-            str2.style.display = "none"
-            str3.style.display = "block"
-            str4.style.display = 'block'
-        } else if (num != 0) {
-            str1.style.display = "block"
-            str2.style.display = "block"
-            str3.style.display = "block"
-            str4.style.display = 'block'
-        }
+        spp.innerHTML = `${num}item left`
     }
     // 通过点击按钮添加
     bt.onclick = function () {
@@ -205,34 +173,53 @@
         if (e.target.className == 'ck') {
             data[e.target.id].flag = !data[e.target.id].flag
             ont() //添加调用
-            oot() //底部
-            All()
-
+            enq()//底部显示和隐藏
+            toggle()//下面文字隐藏和显示
+            kk()
         }
     }
-    //通过判断设置隐藏和显示
-    function All() {
-        var all = document.getElementsByName('allall')
-        for (let j = 0; j < all.length; j++) {
-            all[j].onclick = function () {
-                mun = j
-                if (mun == 3) {
-                    data = data.filter(i => i.flag == false)
-                    mun =  0
-                    ont()
-                    toggle()
-                    arr[0].classList.add('active')
-                    arr[0].classList.remove('active')
-                }
-                ont()
-                for (var i = 0; i < all.length; i++) {
-                    arr[i].classList.remove('active')
-                    this.All.add('active')
-                }
-            }
-        }
+    //底部下面的显示文字和隐藏
+    function toggle(){
+       var num=data.filter(i=>i.flag==true).length
+       if(num==0){
+        str2.style.display = "none"
+        str3.style.display = "none"
+        str4.style.display = "none"
+       }else if(num==data.length){
+        str1.style.display='block'
+        str2.style.display='none'
+        str3.style.display='none'
+        str4.style.display='block'
+       }else if(num!=0){
+        str1.style.display='block'
+        str2.style.display='block'
+        str3.style.display='block'
+        str4.style.display='block'
+       }
     }
-
+    enq()//底部显示和隐藏
+    // 封装底部点击事件
+    // 获取需要点击的标签
+    var all=document.querySelectorAll('.all')
+    function kk(){
+       for (let i = 0; i < all.length; i++) {
+       mun=i
+       console.log(mun);
+    //    if(mun==3){
+    //     data=data.filter(i=>i.flag==false)
+    //     mun=0
+    //     ont()
+    //     toggle()
+    //     all[0].classList.add("active")
+    //     all[0].classList.remove("active")
+    //    }
+        // ont()
+    //    for (let j = 0; j < all.length; j++) {
+    //     all[j].classList.remove('active')
+    //     this.kk.add('active')
+    //    }
+       }
+    }
     // 点击按钮会动
     document.getElementById('btn').addEventListener('click', function (e) {
         Shaking(e.target)
@@ -402,13 +389,14 @@
         padding-left: 200px;
         font-weight: 700;
     }
-
     /* 底部 */
     .en {
         display: flex;
         justify-content: center;
         align-items: center;
         color: #a6a6b8;
+        margin-bottom: 5px;
+        margin: 20px auto;
     }
 
     .en svg {
@@ -428,6 +416,7 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        margin: 20px 0;
     }
 
     .unq div {
@@ -436,12 +425,6 @@
         gap: 6px;
         /* “gap 属性是用来设置网格行与列之间的间隙,该属性是row-gap and column-gap的简写形式 */
 
-    }
-
-    .unq .titlee {
-        background-color: #fe7345;
-        color: #fff;
-        padding: 4px;
     }
 </style>
 
