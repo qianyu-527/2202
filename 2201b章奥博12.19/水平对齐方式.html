@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="c" width="400" height="400" style="border: 1px solid #ccc;"></canvas>
+</body>
+<script>
+    const cnv = document.getElementById("c")
+    const cxt = cnv.getContext('2d')
+    //竖向辅助线
+    cxt.moveTo(200,0)
+    cxt.lineTo(200,400)
+    cxt.strokeStyle='red'
+    cxt.stroke()
+    cxt.font='30px Arial'
+    //横坐标开始对齐
+    cxt.textAlign='start'//默认值
+    cxt.fillText('网易',200,40)
+    //纵坐标开始对齐
+    cxt.textAlign='end'//结束对齐
+    cxt.fillText('网易end',200,100)
+      //左对齐
+      cxt.textAlign='left'//左对齐
+    cxt.fillText('网易left',200,140)
+     //右对齐
+     cxt.textAlign='right'//右对齐
+    cxt.fillText('网易right',200,180)
+    //居中对齐
+    cxt.textAlign='center'//居中对齐
+    cxt.fillText('网易center',200,280)
+</script>
+
+</html>

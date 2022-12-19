@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="c" width="400" height="400" style="border: 1px solid #ccc;"></canvas>
+</body>
+<script>
+      const cnv=document.getElementById("c")
+    const cxt=cnv.getContext('2d')
+    cxt.lineWidth=20
+    cxt.strokeStyle='pink'
+     cxt.moveTo(50,50)
+     cxt.lineTo(200,50)
+     cxt.setLineDash([10])//1个传参实线与空白都是10px
+     cxt.stroke()
+     
+     cxt.beginPath()
+     cxt.moveTo(50,100)
+     cxt.lineTo(200,100)
+     cxt.setLineDash([10,20])//2个传参实线是10px空白20px
+     cxt.stroke()
+
+     cxt.beginPath()
+     cxt.moveTo(50,150)
+     cxt.lineTo(200,150)
+     cxt.setLineDash([10,20,5])//3个传参实线是10px空白20px  5px实线10px空白 20px实线 5px空白
+     cxt.stroke()
+</script>
+</html>
