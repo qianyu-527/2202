@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 第一种 {}
+    let object1 = {};
+     object1.name = '张三';
+     console.log(object1);
+      //  第二种 使用 new Object() 创建对象
+  var obj = new Object();
+  obj.name = '李四';
+  console.log(obj);
+  // 第三种 使用字面量创建对象
+  var person = {
+     name: '王五',
+     age: 20,
+  };
+ console.log(person);
+ // 第四种 使用工厂模式创建对象
+ function createObject(name) {
+	var o = new Object();
+	o.name = name;
+	o.sayName = function () {
+	alert(this.name);
+  };
+		return o;
+  }
+  var o1 = createObject('老六');
+  var o2 = createObject('li');
+   console.log(o1);
+   // 第五种 通过构造函数创建对象
+   function Person(name) {
+	this.name = name;
+	this.sayName = function () {
+	alert(this.name);
+    };
+  }
+  var p1 = new Person('老七');
+  var p2 = new Person('li');
+  console.log(p1);
+</script>
+</html>
