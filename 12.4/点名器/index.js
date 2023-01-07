@@ -1,208 +1,211 @@
-var tab = [{
-        "id": 1,
-        "name": "张世权",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 2,
-        "name": "宋海宇",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 3,
-        "name": "宋增杰",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 4,
-        "name": "王龙翔",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 5,
-        "name": "侯建荞",
-        "sex": 1,
-        "checked": false
-    },
-    {
-        "id": 6,
-        "name": "郝嫚嫚",
-        "sex": 1,
-        "checked": false
-    },
-    {
-        "id": 7,
-        "name": "付高聪",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 8,
-        "name": "张建雨",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 9,
-        "name": "孙旭瑶",
-        "sex": 1,
-        "checked": false
-    },
-    {
-        "id": 10,
-        "name": "张立",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 11,
-        "name": "巴钦",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 12,
-        "name": "吴倩",
-        "sex": 1,
-        "checked": false
-    },
-    {
-        "id": 13,
-        "name": "徐婉颖",
-        "sex": 1,
-        "checked": false
-    },
-    {
-        "id": 14,
-        "name": "刘艺",
-        "sex": 1,
-        "checked": false
-    },
-    {
-        "id": 15,
-        "name": "薛翔元",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 16,
-        "name": "王伟臣",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 17,
-        "name": "程怀博",
-        "sex": 0,
-        "checked": false
-    }, {
-        "id": 18,
-        "name": "高亚鹏",
-        "sex": 1,
-        "checked": false
-    }, {
-        "id": 19,
-        "name": "韩泽雨",
-        "sex": 0,
-        "checked": false
-    }, {
-        "id": 20,
-        "name": "李宏恩",
-        "sex": 0,
-        "checked": false
-    }, {
-        "id": 21,
-        "name": "江萌洋",
-        "sex": 1,
-        "checked": false
-    }, {
-        "id": 22,
-        "name": "孙铭",
-        "sex": 0,
-        "checked": false
-    }, {
-        "id": 23,
-        "name": "杨志豪",
-        "sex": 0,
-        "checked": false
-    }, {
-        "id": 24,
-        "name": "张宗耀",
-        "sex": 0,
-        "checked": false
-    }, {
-        "id": 25,
-        "name": "周璇",
-        "sex": 1,
-        "checked": false
-    }, {
-        "id": 26,
-        "name": "代伊涵",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 27,
-        "name": "章奥博",
-        "sex": 0,
-        "checked": false
-    },
-    {
-        "id": 28,
-        "name": "李妍",
-        "sex": 1,
-        "checked": false
-    },
-    {
-        "id": 29,
-        "name": "邓林柯",
-        "sex": 0,
-        "checked": false
-    }, {
-        "id": 30,
-        "name": "章涵语",
-        "sex": 0,
-        "checked": false
-    }, {
-        "id": 29,
-        "name": "郑峰",
-        "sex": 0,
-        "checked": false
-    }
-]
-//获取标签
-var time = document.querySelector('.time')
-times()
-// 封装时间
-function times() {
-    dt = new Date();
-    let y = dt.getFullYear();
-    let mt = dt.getMonth() + 1;
-    let day = dt.getDate();
-    let h = dt.getHours();
-    h = h < 10 ? "0" + h : h;
-    let m = dt.getMinutes();
-    m = m < 10 ? "0" + m : m;
-    let s = dt.getSeconds();
-    s = s < 10 ? "0" + s : s;
-     time.innerHTML="时间:"+y + "-" +mt +"-" +day + "-" + h +":" +m + ":" +s
-}
-// 获取ul标签
-var ul = document.querySelector('ul')
-// 调用
-add()
-//渲染页面
-function add(){
-    ul.innerHTML=''
-    tab.forEach(item=>{
-        // 创建标签
-        var li=document.createElement("li")
-        li.innerHTML=`<span>${item.name}</span>`
-        ul.append(li)
-    })
-}
+// 时间渲染
+function geTtime() {
+    var time = document.querySelector('.time')
+    // time.innerHTML = ''
+    var str = new Date().toLocaleString().toLocaleString().split('/').join('-')
+    if (str.length < 19) {
+        str = insertStr(str, 8, '0')
+    } else {
 
+    }
+    time.innerHTML = str
+}
+// 时间
+setInterval(() => {
+    geTtime()
+}, 1000)
+
+function insertStr(source, start, newStr) {
+    return source.slice(0, start) + newStr + source.slice(start)
+}
+var list = [{
+        name: "李妍",
+        sex: 0
+    },
+    {
+        name: "张世权",
+        sex: 1
+    },
+    {
+        name: "王龙翔",
+        sex: 1
+    },
+    {
+        name: "徐婉颖",
+        sex: 0
+    },
+    {
+        name: "付高聪",
+        sex: 1
+    },
+    {
+        name: "吴倩",
+        sex: 0
+    },
+    {
+        name: "张立",
+        sex: 1
+    },
+    {
+        name: "巴钦",
+        sex: 1
+    },
+    {
+        name: "章奥博",
+        sex: 1
+    },
+    {
+        name: "孙铭",
+        sex: 1
+    },
+    {
+        name: "程怀博",
+        sex: 1
+    },
+    {
+        name: "张建雨",
+        sex: 1
+    },
+    {
+        name: "李宏恩",
+        sex: 1
+    },
+    {
+        name: "王伟宸",
+        sex: 1
+    },
+    {
+        name: "李宏恩",
+        sex: 1
+    },
+    {
+        name: "孙旭瑶",
+        sex: 0
+    },
+    {
+        name: "杨志豪",
+        sex: 1
+    },
+    {
+        name: "高鹏亚",
+        sex: 1
+    },
+    {
+        name: "宋海宇",
+        sex: 1
+    },
+    {
+        name: "宋增杰",
+        sex: 1
+    },
+    {
+        name: "侯建荞",
+        sex: 0
+    },
+    {
+        name: "薛翔元",
+        sex: 1
+    },
+    {
+        name: "郝嫚嫚",
+        sex: 0
+    },
+    {
+        name: "代伊涵",
+        sex: 1
+    },
+    {
+        name: "邓林柯",
+        sex: 1
+    },
+    {
+        name: "章涵语",
+        sex: 1
+    },
+    {
+        name: "郑锋",
+        sex: 1
+    },
+    {
+        name: "江萌洋",
+        sex: 0
+    },
+    {
+        name: "张宗耀",
+        sex: 1
+    },
+    {
+        name: "周璇",
+        sex: 0
+    },
+    {
+        name: "刘艺",
+        sex: 0
+    },
+    {
+        name: "韩雨泽",
+        sex: 1
+    },
+]
+
+function suijinum(count) {
+    var a = new Array();
+    for (var i = 0; i < count.length; i++) {
+        a[i] = count[i];
+    }
+    a.sort(function () {
+        return 0.5 - Math.random();
+    })
+    return a;
+}
+// 获取ul
+var ul = document.querySelector('.ul')
+var h2 = document.querySelector('h2')
+var music = document.querySelector('.music')
+// 天选之子
+ul.onclick = function (e) {
+    
+    if (e.target.className == 'dan') {
+        if (e.target.innerHTML == '单人点名') {
+            select(e, '停止')
+        } else {
+            h2.innerHTML = `${suijinum(list)[0].name}`
+            select(e, '单人点名')
+        }
+    }
+    if (e.target.className == 'shuang') {
+        if (e.target.innerHTML == '双人点名') {
+            select(e, '停止')
+        } else {
+            h2.innerHTML = `${suijinum(list)[0].name}  ${suijinum(list)[1].name}`
+            select(e, '双人点名')
+        }
+    }
+    if (e.target.className == 'man') {
+        if (e.target.innerHTML == '男生点名') {
+            select(e, '停止')
+        } else {
+            var arr = list.filter(item => item.sex == 1)
+            h2.innerHTML = `${suijinum(arr)[0].name}`
+            select(e, '男生点名')
+        }
+    }
+    if (e.target.className == 'gir') {
+        if (e.target.innerHTML == '女生点名') {
+            select(e, '停止')
+        } else {
+            var arr = list.filter(item => item.sex == 0)
+            h2.innerHTML = `${suijinum(arr)[0].name}`
+            select(e, '女生点名')
+        }
+    }
+}
+// 显示文字
+function select(e, a) {
+    if (a != '停止') {
+        music.pause()
+    } else {
+        music.play()
+    }
+    e.target.innerHTML = a
+}
