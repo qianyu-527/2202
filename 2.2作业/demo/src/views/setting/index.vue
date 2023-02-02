@@ -1,15 +1,15 @@
 <template>
 	<div>
 		<el-card>
-			<el-tabs>
+			<el-tabs  v-model="activeName">
 				<el-tab-pane label="角色管理" name="first">
 					<el-button type="primary" size="mini" @click="dialogTableVisible=true">新增角色</el-button>
-					<el-table :data="tableData" border >
+					<el-table :data="$store.state.setting.car" border >
 						<el-table-column type="index" label="序号" width="100px" >
 						</el-table-column>
 						<el-table-column prop="name" label="名称" >
 						</el-table-column>
-						<el-table-column prop="description" label="描述">	
+						<el-table-column prop="description" label="描述">
 						</el-table-column>
 						<el-table-column label="操作">
       <template slot-scope="scope">
@@ -49,18 +49,18 @@
 						<!-- 图标 -->
 						<p >对公司名称、公司地址、营业执照、公司地区的更新，将使得公司资料被重新审核，请谨慎修改</p>
 					</div>
-					<el-form ref="form" :model="form" label-width="80px" class="form">
+					<el-form label-width="80px" class="form">
   <el-form-item label="公司名称">
-    <el-input v-model="form.name" disabled></el-input>
+    <el-input v-model="$store.state.setting.list.name" disabled></el-input>
   </el-form-item>
 	<el-form-item label="公司地址">
-    <el-input v-model="form.companyAddress" disabled></el-input>
+    <el-input v-model="$store.state.setting.list.companyAddress" disabled></el-input>
   </el-form-item>
 	<el-form-item label="邮箱">
-    <el-input v-model="form.mailbox" disabled></el-input>
+    <el-input v-model="$store.state.setting.list.mailbox" disabled></el-input>
   </el-form-item>
 	<el-form-item label="备注">
-    <el-input type="textarea" v-model="form.remarks" disabled></el-input>
+    <el-input type="textarea" v-model="$store.state.setting.list.remarks" disabled></el-input>
   </el-form-item>
 
 	</el-form>
@@ -79,8 +79,8 @@ export default {
 			/**分页 */
 			total: 100,
       pageSize: 10,
+			activeName: 'first',
       pageCount: 1,
-				form: {},/**表单 */
 				dialogTableVisible:false,/**模态框 */
 				ruleForm:{
 					name:"",
@@ -118,7 +118,7 @@ export default {
 							/**提示 */
 							this.$message.success(message)
 							/**渲染页面 */
-							this.getlist()
+	this.$store.dispatch('setting/gentlest', {page: this.pageCount,size: this.pageSize,total: this.total})
 						}
 					})
         }).catch(() => {
@@ -132,18 +132,9 @@ export default {
 			handleCurrentChange(val) {
 				this.pageSize = 10
 				this.pageCount =val
-				this.getlist()
+				this.$store.dispatch('setting/gentlest', {page: this.pageCount,size: this.pageSize,total: this.total})
       },
-			/**数据 */
-			getlist(){
-				setting({page: this.pageCount,size: this.pageSize,total: this.total}).then(res=>{
-		if(res.data.code==10000){
-			const {rows,total}=res.data.data
-			this.tableData=rows
-			this.total=total
-		}
-		})
-			},
+
 			/**模态框确定 */
 			sub() {
 				if(this.ruleForm.id==0){
@@ -153,7 +144,7 @@ export default {
 							/**提示 */
 							this.$message.success(message)
 							/**渲染页面 */
-							this.getlist()
+							// this.getlist()
 							/**关闭模态框 */
 							this.dialogTableVisible=false
 							/**清空 */
@@ -169,7 +160,7 @@ export default {
 							/**提示 */
 							this.$message.success(message)
 							/**渲染页面 */
-							this.getlist()
+							// this.getlist()
 							/**关闭模态框 */
 							this.dialogTableVisible=false
 							/**清空 */
@@ -183,16 +174,13 @@ export default {
 
 	},
 	created () {
-this.getlist()
- set().then(res=>{
-	if(res.data.code==10000){
-		this.form=res.data.data
-		}
- })
 
 	},
 	mounted () {
-
+		 /**公司信息 */
+	this.$store.dispatch('setting/gentlest', {page: this.pageCount,size: this.pageSize,total: this.total})
+  /**公司信息 */
+	this.$store.dispatch('setting/gest', )
 	},
 	components: {
 
